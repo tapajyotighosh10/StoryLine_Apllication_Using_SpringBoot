@@ -22,7 +22,7 @@ public class UserDto {
     private String email;
 
     @NotEmpty(message = "Password cannot be empty")
-    @Size(min =8,max = 10,message = "password must be min of 8 character and max of 10 character.")
+//    @Size(min =8,max = 10,message = "password must be min of 8 character and max of 10 character.")
     private String password;
 
     @NotNull(message = "About cannot be null")
