@@ -88,6 +88,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>blogging-application-springboot</finalName>
 	</build>
 
 </project>
