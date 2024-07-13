@@ -2,6 +2,7 @@ package com.blogging.app.controllers;
 
 import com.blogging.app.entites.Post;
 import com.blogging.app.payloads.PostDto;
+import com.blogging.app.payloads.PostResponse;
 import com.blogging.app.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,9 +42,12 @@ public class PostController {
 
     // get all posts
     @GetMapping("/posts")
-    public ResponseEntity<List<PostDto>> getAllPost(){
-        List<PostDto> allPost = this.postService.getAllPost();
-        return new ResponseEntity<List<PostDto>>(allPost,HttpStatus.OK);
+    public ResponseEntity<PostResponse> getAllPost(@RequestParam(value = "pageNumber",defaultValue = "0",required = false) int pageNumber,
+                                                   @RequestParam(value = "pageSize",defaultValue = "5",required = false) int pageSize,
+                                                   @RequestParam(value = "sortBy",defaultValue = "postId",required = false) String sortBy,
+                                                   @RequestParam(value = "sortDir",defaultValue = "asc",required = false) String sortDir){
+        PostResponse postResponse = this.postService.getAllPost(pageNumber,pageSize,sortBy,sortDir);
+        return new ResponseEntity<PostResponse>(postResponse,HttpStatus.OK);
     }
 
     // get posts by id
