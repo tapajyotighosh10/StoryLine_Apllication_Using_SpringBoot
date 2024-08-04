@@ -34,6 +34,7 @@ public class PostServiceImpl implements PostService {
     @Autowired
     private CategoryRepo categoryRepo;
 
+
     @Override
     public PostDto createPost(PostDto postDto,int userId,int categoryId) {
         Users user= this.userRepo.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User ","User id",userId));
